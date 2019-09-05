@@ -7,8 +7,10 @@ const request = require('request');
 
 const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
-
 const dataPath = path.join(__dirname, '../data/');
+if (!fs.existsSync(dataPath)){
+    fs.mkdirSync(dataPath);
+}
 const totalResults = {};
 
 async function getWordsCount(url){
